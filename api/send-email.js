@@ -28,7 +28,7 @@ export default async function handler(req, res) {
   <h2>Thank You!</h2>
   <p>This email serves as a notification that we have received your request to join the waitlist at GreshFinance.</p>
   <p>We will get back to you as soon as possible.</p>
-  <p>Best regards,<br>CodeSynergy</p>
+  <p>Best regards,<br>GreshFinance</p>
 `;
 
       const htmlContent = `

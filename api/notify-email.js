@@ -12,41 +12,16 @@ export default async function handler(req, res) {
     }
 
     if (req.method === 'POST') {
-      const { email, orderSummary } = req.body;
+      const { email } = req.body;
 
-      if (!email || !Array.isArray(orderSummary)) {
-        return res.status(400).json({ error: 'Invalid request payload' });
+      if (!email) {
+        return res.status(400).json({ error: 'Email is required' });
       }
 
-      const orderDetails = orderSummary
-      .map(item => `
-        <div style="
-          border: 1px solid #ddd;
-          border-radius: 8px;
-          padding: 15px;
-          margin-bottom: 15px;
-          display: flex;
-          align-items: center;
-          background-color: #f9f9f9;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        ">
-           
-               style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px; margin-right: 15px;" />
-          <div style="flex: 1;">
-            <p style="margin: 0; font-size: 16px; font-weight: bold; color: #333;">${item.name}</p>
-            <p style="margin: 5px 0 0; font-size: 14px; color: #555;">
-              Email: <span style="color: #000;">${item.email}</span><br>
-             
-            </p>
-          </div>
-        </div>
-      `).join('');
-      
-
       const htmlContent = `
-        <h1>Waitlist recieved!</h1>
-        <p>Here are the Client details:</p>
-        ${orderDetails}
+        <h1>Waitlist Received!</h1>
+        <p>New client email:</p>
+        <p><strong>Email:</strong> ${email}</p>
         <p>Best regards,<br>Gresh Finance</p>
       `;
 

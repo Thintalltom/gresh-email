@@ -25,14 +25,16 @@ export default async function handler(req, res) {
       }
 
       const acknowledgmentOptions = `
-  <h2>Thank You!</h2>
-  <p>This email serves as a notification that we have received your request to join the waitlist at GreshFinance.</p>
-  <p>We will get back to you as soon as possible.</p>
-  <p>Best regards,<br>GreshFinance</p>
+  <h2>Hey ${email} 👋</h2>
+  <p>You’re officially on the Gresh waitlist.</p>
+  <p>With you here, things are already shaping up nicely. Since you’re on the list early, you’ll be among the first to know when we open access.</p>
+  <p>Do you also know someone tired of card payment stress? Tell them about us! 🚀</p>
+  <p>Stay close. We’re almost there.
+Grace from Gresh</p>
 `;
 
       const htmlContent = `
-  <h1>We Received Your Message To Join waitlist at GreshFinance</h1>
+  <h1>You’re In!🎉🎉🎉</h1>
   ${acknowledgmentOptions}
 `;
 
@@ -48,7 +50,7 @@ export default async function handler(req, res) {
       const mailOptions = {
         from: process.env.EMAIL,
         to: email,
-        subject: "Acknowledgment Email from GreshFinance",
+        subject: "You’re In!🎉🎉🎉",
         html: htmlContent,
       };
 
